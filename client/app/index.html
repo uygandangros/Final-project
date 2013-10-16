@@ -1,15 +1,27 @@
 <!doctype html>
 <html>
     <head>
-        <title>Project Title</title>
+        <title>CoE Portal</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
-    <body>
+    <body background="img/bg.jpg">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=560579027331397";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-	<div id="fb-root"></div>
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
+		
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		
+			<div class="PUP">
+				<img src="img/pup.png">
+			</div>
+			
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,13 +29,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="javascript:void(0)">Project Title</a>
+                    <a class="navbar-brand" href="javascript:void(0)">Design Projects</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav menu-crud">
                         <li class='menu-create item'><a href="javascript:void(0)">Create New</a></li>
                         <li class='menu-list item'><a href="javascript:void(0)">Show All</a></li>
                     </ul>
+
                     <ul class="nav navbar-nav navbar-right">
                         <li class='menu-loading'><a href="#">Loading...</a></li>
                         <li class="menu-user dropdown">
@@ -35,10 +48,16 @@
                         </li>
                     </ul>
                     <a href='#' class="btn btn-primary btn-login navbar-btn navbar-right">Log in</a>
+                    <form class="navbar-form navbar-right form-search" role="search" _lpchecked="1">
+                        <div class="form-group">
+                          <input type="text" class="form-control search-input" placeholder="Search">
+                        </div>
+                      </form>
                     </div>
                 </div>
             </div>
             <div class='container'>
+
                 <div class='row app-content'>
                 </div>
             </div>
@@ -64,23 +83,27 @@
                             <th>Year</th>
                             <th>Title</th>
                             <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody class='thesis-list'>
-					</tbody>
+                    </tbody>
                 </table>
-				<div class = "detail-container">
-				</div>
-			</div>
-		</script>
+            </div>
+        </script>
 
         <script id="tpl-thesis-list-item" type="text/x-handlebars-template">
             <tr data-id="{{Id}}">
                 <td>{{Year}}</td>
                 <td>{{Title}}</td>
-                <td><a href='#'>Edit</a></td>
+                <td>
+                    <a href='javascript:void(0)' class='btn-view'>View</a> &nbsp;
+                    <a href='javascript:void(0)' class='btn-edit'>Edit</a> &nbsp;
+					<a href='javascript:void(0)' class='btn-delete'>Delete</a> &nbsp;
+                </td>
             </tr>
-		</script>
+        </script>
 
 
         <script id="tpl-thesis-form" type="text/x-handlebars-template">
@@ -108,25 +131,42 @@
                         <label for="description-input">Description</label>
                         <textarea id='description-input' name='Description' class="form-control" rows="3">{{Description}}</textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save</button>
                     {{#if Id}}
-                    <button class="btn btn-default">Delete</button>
+                        <input id='subtitle-input' type="text" style='display:none;' name='Id' value='{{Id}}'>
+                        <button class="btn-cancel btn btn-default cancelButton">Cancel</button>
                     {{/if}}
+                    <button type="submit" class="btn btn-primary saveButton">Save</button>
                 </form>
             </div>
         </script>
-		
-		<script id="thesis-detail" type="text/x-handlebars-template">
-			<div>
-				<h1>{{Title}}</h1>
-				<h3 small>{{Subtitle}}</h3>
-				<h3 small>{{Year}}</h3>
-				<blockquote>{{Description}}</blockquote>
-			
-			<div class = "fb-comments" data-href="http://awc-thesismanager.appspot.com/thesis-{{Id}}" data-colorscheme="light" data-numposts="10" data-width="550"></div>
-		</div>
-		</script>
 
+
+        <script id="tpl-thesis-detail" type="text/x-handlebars-template">
+            <div class="col-lg-8">
+                <h1>{{Year}} : {{Title}}</h1>
+                <p class="lead">{{Subtitle }}</p>
+                <div class="fb-like" data-href="https://awc-thesismanager.appspot.com/thesis-{{Id}}" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div>
+                <hr>
+                <p>{{Description }}</p>
+                <hr>
+                <div class="fb-comments" data-href="https://awc-thesismanager.appspot.com/thesis-{{Id}}"  data-width="The pixel width of the plugin"></div>
+            </div>
+        </script>
+
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+		<div class="pup">
+		 <img src="img/pup.png">
+		</div>
+
+		<div class="ce">
+		 <img src="img/ce.png">
+		</div>
+		
+		<div class="coe">
+		 <img src="img/coe.png">
+		</div>
+</div>
+		
     </body>
 </html>
 
